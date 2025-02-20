@@ -33,7 +33,7 @@ def get_models():
 
 
 
-def train(X_train, X_valid, y_train, y_valid, save_model, models_dir):
+def ml_train(X_train, X_valid, y_train, y_valid, save_model, models_dir):
 
     # model = get_models()
     # model.fit(X_train, y_train)
