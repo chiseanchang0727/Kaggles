@@ -8,9 +8,9 @@ class InputDataset(Dataset):
 
     def __init__(self, X, y):
         super().__init__()
-
-        self.X = torch.tensor(X.values, dtype=torch.float32)
-        self.y = torch.tensor(y.values, dtype=torch.float32)
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        self.X = torch.tensor(X.values, dtype=torch.float32).to(device)
+        self.y = torch.tensor(y.values, dtype=torch.float32).to(device).view(-1, 1)
 
     def __len__(self):
         return len(self.X)

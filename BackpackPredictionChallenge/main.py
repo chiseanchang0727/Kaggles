@@ -2,6 +2,7 @@
 from pathlib import Path
 import pandas as pd
 import argparse
+import torch
 from src.utils import split_data
 from src.preprocessing import preprocessing
 from src.ml_train import ml_train
@@ -41,7 +42,8 @@ def main():
     
     base_path = Path(__file__).resolve().parent  # Moves up to the project root dynamically
     models_dir = base_path / "models"
-    models_dir.mkdir(exist_ok=True)  # Create the directory if it doesn’t exist
+    models_dir.mkdir(exist_ok=True)  
+    model_w_dir = base_path / "model_weights"
 
     df_train, df_test = get_data(base_path)
 
@@ -63,7 +65,9 @@ def main():
         
     elif args.mode == 'dl_train':
         df_train_processed = preprocessing(df_train)
-        dl_train(df_train_processed)
+        dl_train(df_train_processed, save_model=args.save_model, model_w_dir=model_w_dir)
+
+
  
 if __name__ == '__main__':
     main()
