@@ -64,6 +64,7 @@ def main():
         predict(df_test=df_test_process, model_path=model_path, output_dir=output_dir)
         
     elif args.mode == 'dl_train':
+        #TODO: deal with the missing value
         df_train_processed = preprocessing(df_train)
         dl_train(df_train_processed, save_model=args.save_model, model_w_dir=model_w_dir)
 
