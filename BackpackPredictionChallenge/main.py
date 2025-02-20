@@ -62,10 +62,7 @@ def main():
         df_train_processed = preprocessing(df_train)
         X_train, X_valid, y_train, y_valid = split_data(df_train_processed)
 
-
-        model_path = models_dir / "xgb_model.pkl"
-
-        train(X_train, X_valid, y_train, y_valid, save_model=args.save_model, model_path=model_path)
+        train(X_train, X_valid, y_train, y_valid, save_model=args.save_model, models_dir=models_dir)
 
     elif args.mode == 'predict':
         df_test_process = preprocessing(df_test)
